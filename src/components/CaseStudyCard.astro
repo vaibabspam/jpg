@@ -1,0 +1,8 @@
+---
+const { title, summary } = Astro.props;
+---
+<article class="rounded-2xl border border-line bg-panel p-6">
+  <h3 class="text-lg font-semibold">{title}</h3>
+  <p class="mt-3 text-slate-300">{summary}</p>
+  <a href="/case-studies/" class="mt-5 inline-flex text-sm text-accent">Read case studies →</a>
+</article>

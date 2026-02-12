@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Cloud Security',
+  provider: { '@type': 'Organization', name: 'JPG Infotech' },
+  areaServed: 'Global'
+};
+---
+<BaseLayout title="Cloud Security | JPG Infotech" description="Cloud security architecture, hardening, and monitoring." canonicalPath="/services/cloud-security/" jsonLd={jsonLd}>
+  <section class="container-shell py-16"><h1 class="text-4xl font-bold">Cloud Security</h1><p class="mt-4 text-slate-300">Harden workloads and enforce policy controls across multi-cloud environments.</p><div class="mt-6 rounded-2xl border border-line bg-panel p-6 text-slate-300">TODO: paste full legacy content for this service page (all headings, sections, and feature details).</div></section>
+</BaseLayout>

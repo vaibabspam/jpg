@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const now = Date.now();
+---
+<BaseLayout title="Contact JPG Infotech" description="Book a consult or request a quote from JPG Infotech." canonicalPath="/contact/">
+  <section class="container-shell py-16">
+    <h1 class="text-4xl font-bold">Contact</h1>
+    <p class="mt-4 text-slate-300">Tell us your goals and we will respond with a tailored plan.</p>
+    <form id="contactForm" class="mt-8 grid gap-4 rounded-2xl border border-line bg-panel p-6 md:grid-cols-2">
+      <input type="hidden" id="submittedAt" name="submittedAt" value={String(now)} />
+      <label class="text-sm">Name<input required name="name" class="mt-1 w-full rounded-lg border border-line bg-bg px-3 py-2" /></label>
+      <label class="text-sm">Email<input type="email" required name="email" class="mt-1 w-full rounded-lg border border-line bg-bg px-3 py-2" /></label>
+      <label class="text-sm md:col-span-2">Company<input name="company" class="mt-1 w-full rounded-lg border border-line bg-bg px-3 py-2" /></label>
+      <label class="hidden">Leave empty<input name="website" tabindex="-1" autocomplete="off" /></label>
+      <label class="text-sm md:col-span-2">Message<textarea required name="message" rows="6" class="mt-1 w-full rounded-lg border border-line bg-bg px-3 py-2"></textarea></label>
+      <div class="md:col-span-2 flex flex-wrap gap-3 items-center">
+        <button id="submitBtn" type="submit" class="rounded-full bg-brand px-5 py-2 font-semibold">Send message</button>
+        <a href="mailto:vaigunth@jpginfotech.com" class="text-accent">Fallback: email directly</a>
+      </div>
+      <p id="formStatus" class="md:col-span-2 text-sm text-slate-300" aria-live="polite"></p>
+    </form>
+  </section>
+  <script>
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const btn = document.getElementById('submitBtn');
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      btn.textContent = 'Sending...';
+      btn.setAttribute('disabled', 'true');
+      status.textContent = '';
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('failed');
+        status.textContent = 'Thanks — your request was submitted successfully.';
+        form.reset();
+      } catch {
+        status.textContent = 'Submission failed. Please use the direct email fallback at vaigunth@jpginfotech.com.';
+      } finally {
+        btn.textContent = 'Send message';
+        btn.removeAttribute('disabled');
+      }
+    });
+  </script>
+</BaseLayout>

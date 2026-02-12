@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProofBar from '../components/ProofBar.astro';
+import ServiceCardGrid from '../components/ServiceCardGrid.astro';
+import ProcessStepper from '../components/ProcessStepper.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import CTASection from '../components/CTASection.astro';
+import { legacyInventoryPlaceholders } from '../data/site';
+
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'JPG Infotech',
+  url: 'https://www.jpginfotech.com',
+  email: 'vaigunth@jpginfotech.com',
+  sameAs: []
+};
+---
+<BaseLayout title="JPG Infotech | Secure Cloud & Infrastructure Engineering" description="JPG Infotech delivers cloud migration, security, infrastructure, middleware, and application engineering for enterprise teams." canonicalPath="/" jsonLd={orgJsonLd}>
+  <Hero title="Build resilient digital platforms with security engineered in." subtitle="JPG Infotech helps organizations modernize infrastructure, applications, and cloud operations without compromising trust." />
+  <ProofBar />
+  <ServiceCardGrid />
+  <ProcessStepper />
+  <section class="container-shell py-12">
+    <h2 class="mb-6 text-2xl font-semibold">Featured Outcomes</h2>
+    <div class="grid gap-4 md:grid-cols-2">
+      <CaseStudyCard title="Hybrid cloud modernization program" summary="Placeholder: detailed legacy case study content to be inserted from existing site." />
+      <CaseStudyCard title="Secure middleware stabilization" summary="Placeholder: detailed legacy case study content to be inserted from existing site." />
+    </div>
+  </section>
+  <FAQAccordion />
+  <section class="container-shell py-12">
+    <h2 class="text-2xl font-semibold">Legacy Content Preservation Checklist</h2>
+    <ul class="mt-5 list-disc space-y-2 pl-6 text-slate-300">
+      {legacyInventoryPlaceholders.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
+  <CTASection />
+</BaseLayout>
