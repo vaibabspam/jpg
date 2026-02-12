@@ -1,0 +1,14 @@
+---
+const steps = ['Assess', 'Design', 'Implement', 'Secure', 'Operate'];
+---
+<section class="container-shell py-12">
+  <h2 class="mb-6 text-2xl font-semibold">Delivery Process</h2>
+  <ol class="grid gap-4 sm:grid-cols-5">
+    {steps.map((step, i) => (
+      <li class="rounded-xl border border-line bg-panel p-4">
+        <p class="text-xs text-accent">0{i + 1}</p>
+        <p class="font-semibold">{step}</p>
+      </li>
+    ))}
+  </ol>
+</section>

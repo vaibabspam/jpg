@@ -1,0 +1,18 @@
+---
+import { navLinks, site } from '../data/site';
+---
+<header class="sticky top-3 z-50">
+  <div class="container-shell">
+    <div class="rounded-full border border-line/80 bg-panel/70 px-4 py-3 shadow-glow backdrop-blur">
+      <nav class="flex items-center justify-between gap-4" aria-label="Main">
+        <a href="/" class="font-semibold tracking-wide">{site.name}</a>
+        <ul class="hidden items-center gap-5 text-sm md:flex">
+          {navLinks.map((item) => (
+            <li><a href={item.href} class="text-slate-300 transition hover:text-white">{item.label}</a></li>
+          ))}
+        </ul>
+        <a href="/contact/" class="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white hover:bg-blue-400">Book a consult</a>
+      </nav>
+    </div>
+  </div>
+</header>

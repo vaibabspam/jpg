@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Application Development',
+  provider: { '@type': 'Organization', name: 'JPG Infotech' },
+  areaServed: 'Global'
+};
+---
+<BaseLayout title="Application Development | JPG Infotech" description="Secure application engineering and modernization services." canonicalPath="/services/application-development/" jsonLd={jsonLd}>
+  <section class="container-shell py-16"><h1 class="text-4xl font-bold">Application Development</h1><p class="mt-4 text-slate-300">Build and modernize business-critical software with secure engineering practices.</p><div class="mt-6 rounded-2xl border border-line bg-panel p-6 text-slate-300">TODO: paste full legacy content for this service page (all headings, sections, and feature details).</div></section>
+</BaseLayout>

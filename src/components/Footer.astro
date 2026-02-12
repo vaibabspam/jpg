@@ -1,0 +1,28 @@
+---
+import { navLinks, site } from '../data/site';
+---
+<footer class="mt-16 border-t border-line py-10">
+  <div class="container-shell grid gap-8 md:grid-cols-3">
+    <div>
+      <p class="font-semibold">{site.name}</p>
+      <p class="mt-2 text-sm text-slate-400">Engineering-forward IT infrastructure, application, cloud, and security services.</p>
+    </div>
+    <div>
+      <p class="font-medium">Explore</p>
+      <ul class="mt-2 space-y-1 text-sm text-slate-300">
+        {navLinks.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+        <li><a href="/security/">Security</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-medium">Legal</p>
+      <ul class="mt-2 space-y-1 text-sm text-slate-300">
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+      </ul>
+      <a class="mt-3 block text-sm text-accent" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </div>
+</footer>
