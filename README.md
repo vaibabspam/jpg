@@ -15,15 +15,25 @@ npm run dev
 npm run build
 ```
 
+## Deployment preflight (recommended)
+
+Run this before opening or merging a PR:
+
+```bash
+./scripts/preflight.sh
+```
+
+It validates required routes/files, security header presence, sitemap linkage, and contact function entrypoint.
+
 ## Correct Cloudflare deployment target (important)
 
 This repo is built for **Cloudflare Pages**, not a standalone **Cloudflare Worker** project.
 
-If you see a Cloudflare screen with:
-- `Deploy command: npx wrangler deploy`
-- Worker runtime settings
+If you see Cloudflare configuration values like:
+- Deploy command: `npx wrangler deploy`
+- Worker runtime settings / compatibility flags as the main deploy target
 
-then the repo is connected to the wrong product type.
+then your Git integration is connected to the wrong product.
 
 ## Deploy on Cloudflare Pages (recommended)
 
@@ -43,6 +53,22 @@ then the repo is connected to the wrong product type.
    - `jpginfotech.com`
    - `www.jpginfotech.com`
 7. Confirm HTTPS is active and DNS records are proxied.
+
+## If your PR says “This branch has conflicts that must be resolved”
+
+From your PR branch, run:
+
+```bash
+./scripts/fix-pr-branch.sh origin main
+```
+
+If conflicts are found, resolve files, then:
+
+```bash
+git add .
+git commit -m "Resolve merge conflicts with main"
+git push origin <your-branch>
+```
 
 ## Contact form behavior
 
