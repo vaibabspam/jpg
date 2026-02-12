@@ -1,0 +1,32 @@
+---
+import { navLinks, serviceLinks, site } from '../data/site';
+---
+<footer class="border-t border-white/10 py-12">
+  <div class="container-shell grid gap-8 md:grid-cols-4">
+    <div>
+      <p class="text-lg font-semibold">{site.name}</p>
+      <p class="mt-2 text-sm text-slate-400">Security-focused IT, cloud, and application engineering.</p>
+      <a class="focus-ring mt-4 block text-sm text-cyan" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+    <div>
+      <h2 class="mb-3 text-sm font-semibold">Navigation</h2>
+      <ul class="space-y-2 text-sm text-slate-300">
+        {navLinks.map((link) => <li><a class="focus-ring hover:text-cyan" href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h2 class="mb-3 text-sm font-semibold">Services</h2>
+      <ul class="space-y-2 text-sm text-slate-300">
+        {serviceLinks.map((link) => <li><a class="focus-ring hover:text-cyan" href={link.href}>{link.title}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h2 class="mb-3 text-sm font-semibold">Legal & Trust</h2>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><a class="focus-ring hover:text-cyan" href="/privacy/">Privacy</a></li>
+        <li><a class="focus-ring hover:text-cyan" href="/terms/">Terms</a></li>
+        <li><a class="focus-ring hover:text-cyan" href="/security/">Security</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

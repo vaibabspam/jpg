@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProofBar from '../components/ProofBar.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import ProcessStepper from '../components/ProcessStepper.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import CTASection from '../components/CTASection.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import { oldSiteInventory } from '../data/site';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'JPG Infotech',
+  url: 'https://www.jpginfotech.com',
+  email: 'vaigunth@jpginfotech.com'
+};
+---
+<BaseLayout title="JPG Infotech | IT Infrastructure, Cloud & Security Engineering" description="JPG Infotech delivers secure IT infrastructure, cloud migration, application development, and middleware administration services." canonicalPath="/" jsonLd={jsonLd}>
+  <Hero />
+  <ProofBar />
+  <ServiceGrid />
+  <ProcessStepper />
+  <section class="container-shell py-16">
+    <h2 class="text-2xl font-semibold">Featured outcomes</h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      <CaseStudyCard title="Financial platform cloud hardening" outcome="Reduced critical misconfigurations by 94% in 60 days." />
+      <CaseStudyCard title="Global middleware reliability program" outcome="Improved integration uptime to 99.98% across 18 months." />
+    </div>
+  </section>
+  <section class="container-shell py-8">
+    <h2 class="text-xl font-semibold">Legacy content preservation checklist</h2>
+    <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+      {oldSiteInventory.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
+  <FAQAccordion />
+  <CTASection />
+</BaseLayout>

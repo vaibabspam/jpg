@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'IT Infrastructure Development',
+  provider: { '@type': 'Organization', name: 'JPG Infotech' }
+};
+---
+<BaseLayout title="IT Infrastructure Development | JPG Infotech" description="Secure, scalable infrastructure architecture and implementation services." canonicalPath="/services/it-infrastructure-development/" jsonLd={jsonLd}>
+  <section class="container-shell py-16"><h1 class="text-4xl font-bold">IT Infrastructure Development</h1><p class="mt-4 text-slate-300">Architecture, deployment, hardening, and lifecycle management for enterprise infrastructure.</p></section>
+</BaseLayout>

@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Partners | JPG Infotech" description="Strategic partners and technology ecosystems supported by JPG Infotech." canonicalPath="/partners/">
+  <section class="container-shell py-16">
+    <h1 class="text-4xl font-bold">Partners</h1>
+    <p class="mt-4 text-slate-300">We collaborate with cloud, security, and enterprise software providers to deliver end-to-end client value.</p>
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      {['Cloud Platforms', 'Security Platforms', 'Integration Ecosystems'].map((item) => <div class="glass rounded-xl p-6">{item}</div>)}
+    </div>
+  </section>
+</BaseLayout>

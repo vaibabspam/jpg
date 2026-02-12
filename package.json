@@ -1,0 +1,21 @@
+{
+  "name": "jpg-infotech-site",
+  "version": "1.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^4.16.18",
+    "@astrojs/tailwind": "^5.1.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.4.49",
+    "autoprefixer": "^10.4.20"
+  }
+}

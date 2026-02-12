@@ -1,0 +1,14 @@
+---
+import { serviceLinks } from '../data/site';
+---
+<section class="container-shell py-16">
+  <h2 class="text-2xl font-semibold">Core services</h2>
+  <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {serviceLinks.map((svc) => (
+      <a href={svc.href} class="glass focus-ring rounded-xl p-5 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-glow">
+        <h3 class="font-semibold">{svc.title}</h3>
+        <p class="mt-2 text-sm text-slate-300">{svc.summary}</p>
+      </a>
+    ))}
+  </div>
+</section>

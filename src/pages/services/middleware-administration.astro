@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Middleware Administration',
+  provider: { '@type': 'Organization', name: 'JPG Infotech' }
+};
+---
+<BaseLayout title="Middleware Administration | JPG Infotech" description="Middleware platform operations, optimization, and support." canonicalPath="/services/middleware-administration/" jsonLd={jsonLd}>
+  <section class="container-shell py-16"><h1 class="text-4xl font-bold">Middleware Administration</h1><p class="mt-4 text-slate-300">Operational management of integration middleware, messaging, and enterprise connectors.</p></section>
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="Contact JPG Infotech" description="Book a consult, request a quote, or email JPG Infotech." canonicalPath="/contact/">
+  <section class="container-shell py-16">
+    <h1 class="text-4xl font-bold">Contact us</h1>
+    <p class="mt-4 text-slate-300">Book a consult, request a quote, or send your requirements.</p>
+    <form id="contact-form" class="mt-8 grid max-w-2xl gap-4 glass rounded-2xl p-6" method="post">
+      <input class="focus-ring rounded-lg bg-slate-950 p-3" name="name" placeholder="Full name" required />
+      <input class="focus-ring rounded-lg bg-slate-950 p-3" type="email" name="email" placeholder="Work email" required />
+      <input class="focus-ring rounded-lg bg-slate-950 p-3" name="company" placeholder="Company" />
+      <textarea class="focus-ring rounded-lg bg-slate-950 p-3" name="message" rows="5" placeholder="How can we help?" required></textarea>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+      <input type="hidden" name="formStartedAt" id="formStartedAt" />
+      <button class="focus-ring rounded-full bg-cyan px-5 py-3 font-semibold text-ink" type="submit">Send message</button>
+      <p id="status" class="text-sm text-slate-300" aria-live="polite"></p>
+      <a href={`mailto:${site.email}`} class="focus-ring text-sm text-cyan underline">Fallback email: {site.email}</a>
+    </form>
+  </section>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('status');
+    const startedAt = document.getElementById('formStartedAt');
+    startedAt.value = String(Date.now());
+
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      status.textContent = 'Sending...';
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) throw new Error('Request failed');
+        status.textContent = 'Thanks! Your message has been sent.';
+        form.reset();
+        startedAt.value = String(Date.now());
+      } catch {
+        status.textContent = 'Could not send form right now. Please use fallback email.';
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+</BaseLayout>
