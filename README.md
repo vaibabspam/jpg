@@ -1,5 +1,10 @@
 # JPG Infotech Website Rebuild
 
+## Need the easiest path?
+
+Use this one-page guide: **[docs/SIMPLE-SETUP.md](docs/SIMPLE-SETUP.md)**
+
+
 Astro + TypeScript + Tailwind rebuild for https://www.jpginfotech.com targeting **Cloudflare Pages**.
 
 ## Local development
